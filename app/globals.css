@@ -42,9 +42,11 @@
   --color-footer-link: #d3e2e4;
   --color-footer-label: #9cb2b6;
 
-  /* Marca */
-  --color-brand-violet: #7d8ac8;
-  --color-brand-violet-light: #b3bce7;
+  /* Marca — muestreados del logo original (Gemini_Generated_Image, 1067x1008):
+     la gema da #327180 y la silueta del diente #afd1d3. El HANDOFF §6 pedía un
+     violeta (#7d8ac8 / #b3bce7) que el logo real no usa. */
+  --color-brand: #327180;
+  --color-brand-light: #afd1d3;
 
   /* Reseñas */
   --color-star: #8a6508;

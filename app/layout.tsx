@@ -33,7 +33,17 @@ export const metadata: Metadata = {
     description: site.description,
     images: ['/assets/brand/og-image.jpg'],
   },
-  icons: { icon: '/assets/brand/logo-mark.svg' },
+  icons: {
+    // El SVG es el que usan los navegadores modernos; el PNG queda de respaldo para
+    // los que no lo soportan y para los lectores que piden un raster (Organization
+    // schema, apps que fijan el sitio).
+    icon: [
+      { url: '/assets/brand/logo-mark.svg', type: 'image/svg+xml' },
+      { url: '/assets/brand/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/assets/brand/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: '/assets/brand/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

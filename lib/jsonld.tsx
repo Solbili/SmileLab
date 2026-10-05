@@ -49,7 +49,7 @@ export function dentistSchema(sede: Sede) {
     url: `${site.url}/sedes`,
     telephone: telFromHref(sede.tel),
     image: abs(sede.photo.src),
-    logo: `${site.url}/assets/brand/logo-mark.svg`,
+    logo: `${site.url}/assets/brand/icon-512.png`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: sede.street,
@@ -88,7 +88,7 @@ export function organizationSchema() {
     name: site.legalName,
     alternateName: site.name,
     url: site.url,
-    logo: `${site.url}/assets/brand/logo-mark.svg`,
+    logo: `${site.url}/assets/brand/icon-512.png`,
     image: `${site.url}${site.ogImage}`,
     description: site.footerBlurb,
     foundingDate: site.foundingDate,

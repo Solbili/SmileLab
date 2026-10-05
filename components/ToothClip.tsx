@@ -2,7 +2,7 @@
  * clipPath del marco del masthead (HANDOFF §6).
  *
  * Es una silueta de DIENTE, propia del marco — no es el símbolo del logo.
- * No confundirlas: el logo es el diamante de dos tonos de <LogoMark />.
+ * No confundirlas: el logo es la gema sobre diente de <LogoMark />, con otra silueta.
  *
  * Tiene que estar en el DOM una sola vez (va en el layout): referenciar un archivo
  * externo desde `clip-path: url()` no funciona en todos los navegadores.

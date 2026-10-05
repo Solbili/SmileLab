@@ -101,6 +101,16 @@ Están documentadas en el código, pero conviene saberlas antes de tocar nada:
 
 ## Decisiones que se apartan del handoff
 
+- **El logo es el del cliente, no el del handoff.** §6 describe un diamante violeta
+  (`#7d8ac8` / `#b3bce7`); el archivo que mandó el estudio es una gema teal sobre silueta
+  de diente (`#327180` / `#afd1d3`), la misma marca que está instalada físicamente en las
+  dos sedes —se la ve en el mostrador de la foto de portada, ahí en violeta—. Los dos
+  `path` de `components/Logo.tsx` salen de un calco medido sobre ese archivo: IoU 99,7 %
+  la silueta y 97,9 % la gema contra el raster, con desvíos de ±1px a 646px de ancho. El
+  `viewBox` es `0 0 100 98.48` porque la caja del original mide 646 × 636, no un cuadrado.
+  Va sin el «SMILE LAB» interno, que a tamaño de header queda bajo 8px. Los tokens son
+  `--color-brand` y `--color-brand-light` en `globals.css`.
+
 - **Masthead con `<picture>` en vez de `next/image`.** El recorte desktop (1160×1067) y el
   mobile (760×775) son encuadres distintos, y `next/image` no hace art direction. Con
   `<source media>` el navegador baja un solo archivo. Los JPEG ya vienen a calidad 82 y al
