@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Pacientes',
   description:
     'Atención odontológica para adultos y niños en Córdoba. Explicamos cada paso, respondemos tus consultas y buscamos que cada visita sea tranquila.',
+  openGraph: { images: [{ url: photos.equipoPanel.src, alt: photos.equipoPanel.alt }] },
   alternates: { canonical: '/pacientes' },
 };
 

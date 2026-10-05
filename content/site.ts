@@ -14,6 +14,7 @@ export const site = {
   locale: 'es-AR',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://smilelab.com.ar',
   foundingDate: '2019',
+  ogImage: '/assets/brand/og-image.jpg',
 } as const;
 
 /** Un único mensaje pre-cargado para todos los links de WhatsApp. */

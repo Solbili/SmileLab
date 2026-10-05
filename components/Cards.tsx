@@ -16,7 +16,7 @@ export function TreatmentCard({ treatment }: { treatment: Treatment }) {
         {/* El encuadre cambia por breakpoint: 16/9 en mobile, 16/10 en desktop (§8). */}
         <PhotoFrame
           src={treatment.img}
-          alt={treatment.name}
+          alt={treatment.imgAlt}
           ratio="16/9"
           ratioLg="16/10"
           sizes={GRID_3}

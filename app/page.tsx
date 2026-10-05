@@ -17,7 +17,8 @@ import { photos } from '@/content/photos';
 
 export const metadata: Metadata = {
   title: 'Smile Lab Odontología — Odontólogos en Córdoba',
-  description: site.description,
+  description:
+    'Clínica odontológica en Córdoba, sedes General Paz y Nueva Córdoba. Limpieza, endodoncia, ortodoncia y odontopediatría. Turnos por WhatsApp.',
   alternates: { canonical: '/' },
 };
 

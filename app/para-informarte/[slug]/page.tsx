@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/Button';
 import { PhotoFrame } from '@/components/Photo';
-import { JsonLd, articleSchema } from '@/lib/jsonld';
+import { JsonLd, articleSchema, breadcrumbSchema } from '@/lib/jsonld';
 import { getPost, otherPosts, posts } from '@/content/posts';
 import { links } from '@/content/site';
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       type: 'article',
       title: post.title,
       description: post.desc,
-      images: [{ url: post.img }],
+      images: [{ url: post.img, alt: post.imgAlt }],
     },
   };
 }
@@ -105,7 +105,15 @@ export default async function ArticlePage({ params }: Params) {
         </aside>
       </div>
 
-      <JsonLd data={articleSchema(post)} />
+      <JsonLd
+        data={[
+          articleSchema(post),
+          breadcrumbSchema([
+            { name: 'Para informarte', path: '/para-informarte' },
+            { name: post.title, path: `/para-informarte/${post.slug}` },
+          ]),
+        ]}
+      />
     </div>
   );
 }

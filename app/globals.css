@@ -500,37 +500,6 @@
   }
 }
 
-@keyframes slhero {
-  0%,
-  11% {
-    transform: translateX(0);
-  }
-  14.28%,
-  25.28% {
-    transform: translateX(-14.2857%);
-  }
-  28.57%,
-  39.57% {
-    transform: translateX(-28.5714%);
-  }
-  42.85%,
-  53.85% {
-    transform: translateX(-42.8571%);
-  }
-  57.14%,
-  68.14% {
-    transform: translateX(-57.1428%);
-  }
-  71.42%,
-  82.42% {
-    transform: translateX(-71.4285%);
-  }
-  85.71%,
-  100% {
-    transform: translateX(-85.7142%);
-  }
-}
-
 @keyframes slmarquee {
   from {
     transform: translateX(0);
@@ -550,17 +519,19 @@
   }
 }
 
-/* §7.1 — 7 slides para 6 fotos: la primera se repite al final. */
+/* §7.1 — la última foto repite la primera para que el loop no salte.
+   width, animation-duration y los keyframes los calcula HeroCarousel a partir
+   de la cantidad de fotos; acá va solo lo que no depende de ese número. */
 .hero-track {
   display: flex;
-  width: 700%;
   height: 100%;
-  animation: slhero 45s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation-name: slhero;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  animation-iteration-count: infinite;
 }
 
 .hero-slide {
   position: relative;
-  width: 14.2857%;
   height: 100%;
   flex-shrink: 0;
 }

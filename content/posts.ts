@@ -11,17 +11,14 @@ export type Post = {
   body: { h: string; p: string }[];
 };
 
-const px = (id: number) =>
-  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1400`;
-
 export const posts: Post[] = [
   {
     slug: 'cuanto-dura-una-endodoncia',
     tag: 'Tratamientos',
     read: '3 min',
     title: '¿Cuánto dura una endodoncia?',
-    img: px(5355924),
-    imgAlt: 'Odontóloga trabajando sobre una pieza dental con instrumental de endodoncia.',
+    img: '/assets/articulos/cuanto-dura-una-endodoncia.jpg',
+    imgAlt: 'Odontólogo de Smile Lab durante un tratamiento de conducto en el consultorio.',
     desc: 'Depende del diente y la complejidad del caso. Te contamos qué esperar y cómo prepararte.',
     body: [
       {
@@ -43,8 +40,8 @@ export const posts: Post[] = [
     tag: 'Prevención',
     read: '4 min',
     title: '¿Cómo saber si tengo una caries?',
-    img: px(6627838),
-    imgAlt: 'Control odontológico de rutina en el consultorio.',
+    img: '/assets/articulos/como-saber-si-tengo-caries.jpg',
+    imgAlt: 'Odontóloga revisando la dentadura de una paciente durante un control de rutina.',
     desc: 'Signos a observar, cuándo conviene venir a control y por qué no siempre duelen.',
     body: [
       {

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Para informarte',
   description:
     'Información clara sobre endodoncia, caries y limpieza dental. Las preguntas que más nos hacen en consultorio, respondidas sin tecnicismos.',
+  openGraph: { images: [{ url: posts[0].img, alt: posts[0].imgAlt }] },
   alternates: { canonical: '/para-informarte' },
 };
 

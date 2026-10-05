@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/Button';
 import { PhotoFrame } from '@/components/Photo';
-import { JsonLd, serviceSchema } from '@/lib/jsonld';
+import { JsonLd, breadcrumbSchema, serviceSchema } from '@/lib/jsonld';
 import { getTreatment, otherTreatments, treatmentAside, treatments } from '@/content/treatments';
 import { links } from '@/content/site';
 
@@ -22,7 +22,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: treatment.name,
     description: treatment.detail,
     alternates: { canonical: `/tratamientos/${treatment.slug}` },
-    openGraph: { title: `${treatment.name} | Smile Lab`, description: treatment.detail },
+    openGraph: {
+      type: 'article',
+      title: `${treatment.name} en Córdoba | Smile Lab`,
+      description: treatment.detail,
+      images: [{ url: treatment.img, alt: treatment.imgAlt }],
+    },
   };
 }
 
@@ -113,7 +118,15 @@ export default async function TreatmentPage({ params }: Params) {
         </div>
       </div>
 
-      <JsonLd data={serviceSchema(treatment)} />
+      <JsonLd
+        data={[
+          serviceSchema(treatment),
+          breadcrumbSchema([
+            { name: 'Tratamientos', path: '/tratamientos' },
+            { name: treatment.name, path: `/tratamientos/${treatment.slug}` },
+          ]),
+        ]}
+      />
     </div>
   );
 }

@@ -94,9 +94,10 @@ Están documentadas en el código, pero conviene saberlas antes de tocar nada:
    del logo. Vive en el DOM una sola vez (`<ToothClip />` en el layout) porque
    `clip-path: url()` contra un archivo externo no funciona en todos los navegadores.
    El contenedor debe respetar `1/0.92` (desktop) y `1/1.02` (mobile) o se deforma.
-3. **`§7.1` / `§7.2` — los loops.** El carrusel tiene 7 slides para 6 fotos (la primera se
-   repite al final) y la marquesina duplica las 6 reseñas y se traslada `-50%`. Si se
-   cambia la cantidad, hay que recalcular los keyframes.
+3. **`§7.1` / `§7.2` — los loops.** La última foto del carrusel repite la primera y la
+   marquesina duplica la lista de reseñas, para que ningún loop salte. Ambos calculan sus
+   tiempos a partir de la cantidad real de elementos (`HeroCarousel` emite sus propios
+   keyframes; la marquesina usa `--n`), así que sumar o sacar fotos y reseñas no los rompe.
 
 ## Decisiones que se apartan del handoff
 
@@ -133,9 +134,12 @@ Dos reseñas quedaron deliberadamente afuera: las de Wendi Romina Oroná y valen
 cortese, que en la captura estaban cortadas con «… Más». Se descartan en vez de publicarse
 truncadas — una reseña cortada a mitad de frase se lee como un error, y completarla a ojo
 sería inventar. Si más adelante se conecta la API de Places entran solas y completas.
-- [ ] **Fotos propias** para ortodoncia, blanqueamiento y dos de los artículos. Hoy son
-      stock de Pexels servido desde `images.pexels.com` (§10). Conviene bajarlas y servirlas
-      desde el propio dominio: hoy el sitio depende de un CDN de terceros para 8 imágenes.
+- [x] ~~Fotos propias~~ — hechas. De las 8 imágenes de stock quedan **2**: blanqueamiento y
+      odontopediatría, los únicos tratamientos sin foto propia. El resto se sirve desde
+      `/public/assets`. No se usó una foto clínica propia para esos dos: la única candidata
+      para blanqueamiento era en realidad un cementado de brackets, y etiquetarla mal en un
+      sitio de salud es un error, no un detalle estético.
+- [ ] **Faltan fotos de** blanqueamiento y de odontopediatría (no hay ninguna con niños).
 - [ ] **Confirmar el listado de profesionales** de `content/team.ts`. En el export de
       Dentalink conviven profesionales reales con registros de demo (los de matrícula
       `MP 12.345 / 23.456 / 34.567` son correlativos y quedaron apartados en
@@ -158,6 +162,29 @@ El checklist del §12 está verificado sobre el build de producción:
 - Radios, paddings, hover, tamaños de logo y hamburguesa medidos contra §5/§6/§7 en ambos
   breakpoints (el mobile baja un escalón: cards 18px, paneles 22px, mapa 14px)
 - Los tres eventos de conversión disparan con el destino correcto y los links internos no
+
+## SEO y búsqueda con IA
+
+El objetivo es doble: posicionar en «odontólogo Córdoba» / «dentista Nueva Córdoba», y que
+un asistente con IA pueda responder «¿dónde hago una endodoncia en Córdoba?» citando este
+sitio. Lo segundo se juega en datos estructurados y texto extraíble, no en keywords.
+
+| Qué | Dónde |
+|---|---|
+| `Dentist` por sede, con `hasOfferCatalog` de los 6 tratamientos, `medicalSpecialty`, `areaServed`, horarios y `ReserveAction` | `lib/jsonld.tsx` |
+| `MedicalProcedure` por tratamiento, con `howPerformed` armado desde los pasos | idem |
+| `Article` con `articleBody`, `FAQPage` con las 8 preguntas, `BreadcrumbList` en las rutas de detalle | idem |
+| `robots.txt` que nombra uno por uno a GPTBot, ClaudeBot, PerplexityBot, Google-Extended y compañía | `app/robots.ts` |
+| `sitemap.xml` con las imágenes asociadas a cada página | `app/sitemap.ts` |
+| `/llms.txt` generado desde `/content`, con NAP, tratamientos y FAQ en texto plano | `app/llms.txt/route.ts` |
+| `alt` únicos y descriptivos en toda imagen | `content/photos.ts`, `content/treatments.ts`, `content/posts.ts` |
+
+Dos advertencias para quien toque esto:
+
+- **No bloquear `Google-Extended`.** No afecta aparecer en Google: gobierna si Gemini puede
+  usar el contenido. Bloquearlo deja a la clínica fuera de esas respuestas.
+- La adopción de `/llms.txt` todavía es despareja. Se publica porque cuesta nada y se genera
+  desde el contenido, así que no puede quedar desactualizado; no reemplaza al HTML ni al JSON-LD.
 
 ## Por qué no hay JSON-LD de `Review`
 
