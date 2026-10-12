@@ -65,7 +65,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line-strong bg-bg/90 backdrop-blur-[12px]">
+    <header data-track="header" className="sticky top-0 z-50 border-b border-line-strong bg-bg/90 backdrop-blur-[12px]">
       <div className="container-sl flex h-[58px] items-center gap-8 lg:h-[76px]">
         <Logo />
 
@@ -122,6 +122,7 @@ export function Header() {
         createPortal(
           <div
             id="menu-mobile"
+            data-track="menu_mobile"
             ref={panelRef}
             className="anim-fade fixed inset-x-0 bottom-0 top-[58px] z-40 overflow-y-auto bg-bg px-[18px] py-6 lg:hidden"
           >
