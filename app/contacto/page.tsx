@@ -5,11 +5,13 @@ import { MapEmbed } from '@/components/Photo';
 import { JsonLd, dentistSchema } from '@/lib/jsonld';
 import { sedes } from '@/content/sedes';
 import { links } from '@/content/site';
+import { pageOpenGraph } from '@/lib/metadata';
 
 export const metadata: Metadata = {
   title: 'Contacto',
   description:
     'Escribinos por WhatsApp, reservá en la agenda online o seguinos en Instagram. Mapas y teléfonos de las sedes General Paz y Nueva Córdoba.',
+  openGraph: pageOpenGraph('/contacto'),
   alternates: { canonical: '/contacto' },
 };
 

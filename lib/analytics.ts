@@ -6,7 +6,16 @@
  * el mapa de una sede.
  */
 
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+/**
+ * El ID de GA4 es público (va en el HTML), así que vive acá y no depende de que
+ * alguien cargue la variable en Vercel. Solo se activa en producción: los
+ * previews y el dev no ensucian los datos. NEXT_PUBLIC_GA_ID lo pisa si hace falta.
+ */
+const GA_PROD_ID = 'G-8D1XH5SJ9H';
+
+export const GA_ID =
+  process.env.NEXT_PUBLIC_GA_ID ??
+  (process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? GA_PROD_ID : undefined);
 
 export type ConversionEvent = 'wsp_click' | 'agenda_click' | 'sede_maps_click';
 

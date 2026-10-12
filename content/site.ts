@@ -12,7 +12,8 @@ export const site = {
   footerBlurb:
     'Odontología clara, cercana y profesional. Clínica odontológica con sedes en General Paz y Nueva Córdoba. Atención para adultos y niños.',
   locale: 'es-AR',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://smilelab.com.ar',
+  // Sin barra final: se concatena con paths en sitemap, canonicals y JSON-LD.
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.consultoriosmilelab.com').replace(/\/$/, ''),
   foundingDate: '2019',
   ogImage: '/assets/brand/og-image.jpg',
 } as const;

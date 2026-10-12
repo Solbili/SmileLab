@@ -6,12 +6,13 @@ import { MapEmbed, PhotoFrame } from '@/components/Photo';
 import { JsonLd, dentistSchema } from '@/lib/jsonld';
 import { sedes } from '@/content/sedes';
 import { links } from '@/content/site';
+import { pageOpenGraph } from '@/lib/metadata';
 
 export const metadata: Metadata = {
   title: 'Sedes',
   description:
     'Smile Lab tiene dos sedes en Córdoba: General Paz (Gral. Román Deheza 158) y Nueva Córdoba (Av. Ambrosio Olmos 782). Horarios, teléfonos y cómo llegar.',
-  openGraph: { images: [{ url: sedes[0].photoWide, alt: sedes[0].photo.alt }] },
+  openGraph: pageOpenGraph('/sedes', { images: [{ url: sedes[0].photoWide, alt: sedes[0].photo.alt }] }),
   alternates: { canonical: '/sedes' },
 };
 

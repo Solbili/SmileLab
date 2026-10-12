@@ -6,6 +6,7 @@ import { PhotoFrame } from '@/components/Photo';
 import { JsonLd, breadcrumbSchema, serviceSchema } from '@/lib/jsonld';
 import { getTreatment, otherTreatments, treatmentAside, treatments } from '@/content/treatments';
 import { links } from '@/content/site';
+import { pageOpenGraph } from '@/lib/metadata';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -22,12 +23,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: treatment.name,
     description: treatment.detail,
     alternates: { canonical: `/tratamientos/${treatment.slug}` },
-    openGraph: {
+    openGraph: pageOpenGraph(`/tratamientos/${treatment.slug}`, {
       type: 'article',
       title: `${treatment.name} en Córdoba | Smile Lab`,
       description: treatment.detail,
       images: [{ url: treatment.img, alt: treatment.imgAlt }],
-    },
+    }),
   };
 }
 
