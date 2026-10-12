@@ -3,11 +3,13 @@ import { Button } from '@/components/Button';
 import { PageHero, Em } from '@/components/Section';
 import { steps } from '@/content/home';
 import { links } from '@/content/site';
+import { pageOpenGraph } from '@/lib/metadata';
 
 export const metadata: Metadata = {
   title: 'Turnos',
   description:
     'Cómo pedir turno en Smile Lab: reservás online o coordinás por WhatsApp en pocos pasos. Te respondemos en minutos en horario de consultorio.',
+  openGraph: pageOpenGraph('/turnos'),
   alternates: { canonical: '/turnos' },
 };
 

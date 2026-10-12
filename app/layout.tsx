@@ -27,12 +27,9 @@ export const metadata: Metadata = {
     description: site.description,
     images: [{ url: '/assets/brand/og-image.jpg', width: 1200, height: 630, alt: site.legalName }],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Smile Lab Odontología — Odontólogos en Córdoba',
-    description: site.description,
-    images: ['/assets/brand/og-image.jpg'],
-  },
+  // Sin título/descr./imagen propios: Next los toma del openGraph de cada página.
+  // Si se fijaran acá, todas las páginas compartirían el texto de la home.
+  twitter: { card: 'summary_large_image' },
   icons: {
     // El SVG es el que usan los navegadores modernos; el PNG queda de respaldo para
     // los que no lo soportan y para los lectores que piden un raster (Organization

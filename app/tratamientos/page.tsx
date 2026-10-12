@@ -4,12 +4,13 @@ import { TreatmentCard } from '@/components/Cards';
 import { JsonLd } from '@/lib/jsonld';
 import { treatments } from '@/content/treatments';
 import { site } from '@/content/site';
+import { pageOpenGraph } from '@/lib/metadata';
 
 export const metadata: Metadata = {
   title: 'Tratamientos',
   description:
     'Limpieza dental, endodoncia, caries y restauraciones, ortodoncia, blanqueamiento y odontopediatría en las dos sedes de Smile Lab en Córdoba.',
-  openGraph: { images: [{ url: treatments[3].img, alt: treatments[3].imgAlt }] },
+  openGraph: pageOpenGraph('/tratamientos', { images: [{ url: treatments[3].img, alt: treatments[3].imgAlt }] }),
   alternates: { canonical: '/tratamientos' },
 };
 

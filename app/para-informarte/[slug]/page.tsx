@@ -6,6 +6,7 @@ import { PhotoFrame } from '@/components/Photo';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/lib/jsonld';
 import { getPost, otherPosts, posts } from '@/content/posts';
 import { links } from '@/content/site';
+import { pageOpenGraph } from '@/lib/metadata';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -22,12 +23,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: post.title,
     description: post.desc,
     alternates: { canonical: `/para-informarte/${post.slug}` },
-    openGraph: {
+    openGraph: pageOpenGraph(`/para-informarte/${post.slug}`, {
       type: 'article',
       title: post.title,
       description: post.desc,
       images: [{ url: post.img, alt: post.imgAlt }],
-    },
+    }),
   };
 }
 

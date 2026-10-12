@@ -33,7 +33,7 @@ npm run lint
 ### Variables de entorno
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://smilelab.com.ar
+NEXT_PUBLIC_SITE_URL=https://www.consultoriosmilelab.com
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX        # opcional
 ```
 

@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/Section';
 import { PostCard } from '@/components/Cards';
 import { posts } from '@/content/posts';
+import { pageOpenGraph } from '@/lib/metadata';
 
 export const metadata: Metadata = {
   title: 'Para informarte',
   description:
     'Información clara sobre endodoncia, caries y limpieza dental. Las preguntas que más nos hacen en consultorio, respondidas sin tecnicismos.',
-  openGraph: { images: [{ url: posts[0].img, alt: posts[0].imgAlt }] },
+  openGraph: pageOpenGraph('/para-informarte', { images: [{ url: posts[0].img, alt: posts[0].imgAlt }] }),
   alternates: { canonical: '/para-informarte' },
 };
 
