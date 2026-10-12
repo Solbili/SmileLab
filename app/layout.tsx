@@ -4,6 +4,7 @@ import { hanken, jost } from './fonts';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { MobileActionBar } from '@/components/MobileActionBar';
+import { WhatsAppFloat } from '@/components/WhatsAppFloat';
 import { ToothClip } from '@/components/ToothClip';
 import { Analytics } from '@/components/Analytics';
 import { JsonLd, organizationSchema } from '@/lib/jsonld';
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
           <MobileActionBar />
+          <WhatsAppFloat />
         </div>
         <JsonLd data={organizationSchema()} />
         <Analytics />

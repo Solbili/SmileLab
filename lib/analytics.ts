@@ -57,13 +57,14 @@ type GtagParams = Record<string, string | number | undefined>;
 
 declare global {
   interface Window {
-    gtag?: (command: 'event' | 'config' | 'js', target: string, params?: GtagParams) => void;
+    gaGtag?: (command: 'event' | 'config' | 'js', target: string, params?: GtagParams) => void;
+    gaDataLayer?: unknown[];
     dataLayer?: unknown[];
   }
 }
 
 export function track(event: ConversionEvent, params: GtagParams = {}) {
-  window.gtag?.('event', event, params);
+  window.gaGtag?.('event', event, params);
   // Para GTM: el mismo evento como «Evento personalizado» (wsp_click, etc.), que
   // es lo que disparan las conversiones de Ads y del Píxel de Meta.
   if (GTM_ID) (window.dataLayer = window.dataLayer || []).push({ event, ...params });

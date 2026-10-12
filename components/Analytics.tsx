@@ -43,17 +43,20 @@ export function Analytics() {
 
   return (
     <>
+      {/* GA4 usa su propia capa de datos (gaDataLayer) y no la `dataLayer` de GTM:
+          GTM toma cada gtag('event', …) como un evento más, y cada clic contaba
+          dos veces en los activadores de Ads y Meta. */}
       {GA_ID && (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}&l=gaDataLayer`}
             strategy="afterInteractive"
           />
           <Script id="ga4-init" strategy="afterInteractive">
-            {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_ID}');`}
+            {`window.gaDataLayer = window.gaDataLayer || [];
+window.gaGtag = function(){gaDataLayer.push(arguments);};
+gaGtag('js', new Date());
+gaGtag('config', '${GA_ID}');`}
           </Script>
         </>
       )}

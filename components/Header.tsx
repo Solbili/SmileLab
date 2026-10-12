@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Logo } from './Logo';
 import { Button } from './Button';
-import { links, nav, navMobile } from '@/content/site';
+import { links, nav, navMobile, type NavItem } from '@/content/site';
 
 /**
  * Header sticky (HANDOFF §2) + menú mobile (§7.5).
@@ -71,10 +71,10 @@ export function Header() {
 
         <nav aria-label="Principal" className="ml-auto hidden items-center gap-0.5 lg:flex">
           {nav.map((item) => (
-            <Link
+            <NavLink
               key={item.href}
-              href={item.href}
-              aria-current={isActive(item.href) ? 'page' : undefined}
+              item={item}
+              active={isActive(item.href)}
               className="relative rounded-pill px-[14px] py-[9px] text-[14.5px] font-medium text-body transition-colors hover:bg-nav-hover hover:text-ink"
             >
               {item.label}
@@ -84,7 +84,7 @@ export function Header() {
                   className="absolute inset-x-[14px] bottom-px h-0.5 rounded-sm bg-accent"
                 />
               )}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -128,14 +128,14 @@ export function Header() {
           >
             <nav aria-label="Principal" className="flex flex-col">
               {navMobile.map((item) => (
-                <Link
+                <NavLink
                   key={item.href}
-                  href={item.href}
-                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  item={item}
+                  active={isActive(item.href)}
                   className="border-b border-line-strong px-1 py-4 font-display text-[26px] font-light text-ink"
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </nav>
 
@@ -149,5 +149,31 @@ export function Header() {
           document.body
         )}
     </header>
+  );
+}
+
+/** Las rutas internas van con <Link>; las externas (WhatsApp) abren en otra pestaña. */
+function NavLink({
+  item,
+  active,
+  className,
+  children,
+}: {
+  item: NavItem;
+  active: boolean;
+  className: string;
+  children: React.ReactNode;
+}) {
+  if (item.external) {
+    return (
+      <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={item.href} aria-current={active ? 'page' : undefined} className={className}>
+      {children}
+    </Link>
   );
 }
