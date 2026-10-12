@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       {/* Masthead ------------------------------------------------------- */}
-      <section className="container-sl section-hero">
+      <section data-track="home_hero" className="container-sl section-hero">
         <div className="hero-grid">
           <div className="hero-text">
             <Kicker>Odontología en Córdoba</Kicker>
@@ -61,7 +61,7 @@ export default function Home() {
       </section>
 
       {/* Pilares + banda de WhatsApp -------------------------------------- */}
-      <section className="container-sl section-tight">
+      <section data-track="home_banda_whatsapp" className="container-sl section-tight">
         <div className="grid gap-[18px] sm:grid-cols-3">
           {pillars.map((p) => (
             <div key={p.kicker} className="card card-sm p-5 lg:p-7">
@@ -86,7 +86,7 @@ export default function Home() {
       </section>
 
       {/* Tratamientos ----------------------------------------------------- */}
-      <section className="container-sl section">
+      <section data-track="home_tratamientos" className="container-sl section">
         <SectionHeader
           kicker="Tratamientos"
           title={
@@ -109,7 +109,7 @@ export default function Home() {
       </section>
 
       {/* Sedes ------------------------------------------------------------ */}
-      <section className="container-sl section">
+      <section data-track="home_sedes" className="container-sl section">
         <Kicker>Elegí tu sede</Kicker>
         <h2 className="t-h2-section mt-4">Dos sedes para atenderte mejor.</h2>
         <p className="t-body mt-4 max-w-[62ch] text-muted">
@@ -160,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* Cómo funciona ---------------------------------------------------- */}
-      <section className="container-sl section">
+      <section data-track="home_como_funciona" className="container-sl section">
         <div className="panel bg-dark px-[22px] py-[30px] lg:px-[50px] lg:py-[58px]">
           <div className="t-kicker text-accent">Cómo funciona</div>
           <h2 className="t-h2-section mt-4 text-white">
@@ -193,7 +193,7 @@ export default function Home() {
       </section>
 
       {/* Reseñas ---------------------------------------------------------- */}
-      <section className="section overflow-hidden">
+      <section data-track="home_resenas" className="section overflow-hidden">
         <div className="container-sl">
           <Kicker>Experiencias</Kicker>
           <h2 className="t-h2-section mt-4 max-w-[26ch]">
@@ -204,7 +204,7 @@ export default function Home() {
       </section>
 
       {/* Tu experiencia --------------------------------------------------- */}
-      <section className="container-sl section">
+      <section data-track="home_experiencia" className="container-sl section">
         <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-[60px]">
           <div>
             <Kicker>Tu experiencia</Kicker>
@@ -226,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* Para informarte -------------------------------------------------- */}
-      <section className="container-sl section">
+      <section data-track="home_para_informarte" className="container-sl section">
         <SectionHeader
           size="sm"
           kicker="Para informarte"
@@ -246,7 +246,7 @@ export default function Home() {
       </section>
 
       {/* Equipo ----------------------------------------------------------- */}
-      <section className="container-sl section">
+      <section data-track="home_equipo" className="container-sl section">
         <div className="card panel grid items-stretch overflow-hidden lg:grid-cols-2">
           <div className="self-center p-6 lg:p-[50px]">
             <Kicker>Equipo</Kicker>
@@ -272,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* FAQ -------------------------------------------------------------- */}
-      <section className="container-sl section">
+      <section data-track="home_faq" className="container-sl section">
         <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-[60px]">
           <div>
             <Kicker>Preguntas frecuentes</Kicker>
@@ -286,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* CTA final -------------------------------------------------------- */}
-      <section className="container-sl section">
+      <section data-track="home_cta_final" className="container-sl section">
         <div className="panel relative overflow-hidden bg-[linear-gradient(160deg,#cfe6e6_0%,#a9d3d5_100%)] px-[22px] py-9 text-center lg:px-[50px] lg:py-[70px]">
           <div
             aria-hidden="true"

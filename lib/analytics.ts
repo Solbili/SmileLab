@@ -43,6 +43,16 @@ export function eventForHref(href: string | null | undefined): ConversionEvent |
   return null;
 }
 
+/**
+ * Desde qué parte del sitio salió el clic: el `data-track` más cercano (header,
+ * footer, barra mobile, cada sección de la home). Fuera de esas zonas es el
+ * contenido de la página, y `page_path` dice cuál. Con esto se arman audiencias
+ * por sector («tocó WhatsApp desde Tratamientos», etc.).
+ */
+export function clickLocation(el: Element): string {
+  return el.closest('[data-track]')?.getAttribute('data-track') ?? 'contenido';
+}
+
 type GtagParams = Record<string, string | number | undefined>;
 
 declare global {

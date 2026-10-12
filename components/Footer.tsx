@@ -30,7 +30,7 @@ const linkCls =
 
 export function Footer() {
   return (
-    <footer className="mt-[clamp(44px,calc(44px+56*(100vw-390px)/790),100px)] bg-dark text-dark-body">
+    <footer data-track="footer" className="mt-[clamp(44px,calc(44px+56*(100vw-390px)/790),100px)] bg-dark text-dark-body">
       <div className="container-sl grid gap-10 pb-7 pt-14 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
         <div>
           <Logo tone="dark" />

@@ -3,7 +3,7 @@
 import Script from 'next/script';
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { GA_ID, GTM_ID, eventForHref, track } from '@/lib/analytics';
+import { GA_ID, GTM_ID, clickLocation, eventForHref, track } from '@/lib/analytics';
 
 /**
  * GA4, Google Tag Manager y los tres eventos de conversión del §1.
@@ -31,6 +31,7 @@ export function Analytics() {
       track(event, {
         link_url: href ?? undefined,
         link_text: link.textContent?.trim().slice(0, 100) || undefined,
+        click_location: clickLocation(link),
         page_path: pathname,
       });
     };
