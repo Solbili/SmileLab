@@ -39,10 +39,12 @@ export const sedes: Sede[] = [
     tel: 'tel:+543516886431',
     photo: { src: photos.sedeGeneralPaz.src, alt: photos.sedeGeneralPaz.alt },
     photoWide: photos.sedeGeneralPaz.wide,
-    maps: 'https://www.google.com/maps/search/?api=1&query=Smile+Lab+General+Paz+Cordoba',
+    // cid = ficha de Google Business de la sede: abre el perfil con reseñas y horarios.
+    maps: 'https://www.google.com/maps?cid=14798708644223069714',
     embed:
-      'https://www.google.com/maps?q=Gral.+Rom%C3%A1n+Deheza+158,+C%C3%B3rdoba,+Argentina&z=16&output=embed',
+      'https://www.google.com/maps?q=Smile+Lab+General+Paz,+Gral.+Rom%C3%A1n+Deheza+158,+C%C3%B3rdoba,+Argentina&z=16&output=embed',
     wa: `https://wa.me/543516886431?text=${WA_TEXT}`,
+    geo: { lat: -31.4131546, lng: -64.1619517 },
     hours: HOURS,
   },
   {
@@ -55,11 +57,12 @@ export const sedes: Sede[] = [
     tel: 'tel:+5493512584060',
     photo: { src: photos.sedeNuevaCordoba.src, alt: photos.sedeNuevaCordoba.alt },
     photoWide: photos.sedeNuevaCordoba.wide,
-    maps: 'https://www.google.com/maps/place/Smile+Lab+Nueva+Cordoba/@-31.430742,-64.1898147,17z',
+    maps: 'https://www.google.com/maps?cid=11957966921173911950',
     embed:
-      'https://www.google.com/maps?q=Av.+Ambrosio+Olmos+782,+C%C3%B3rdoba,+Argentina&z=16&output=embed',
+      'https://www.google.com/maps?q=Smile+Lab+Nueva+C%C3%B3rdoba,+Av.+Ambrosio+Olmos+782,+C%C3%B3rdoba,+Argentina&z=16&output=embed',
     wa: `https://wa.me/5493512584060?text=${WA_TEXT}`,
-    geo: { lat: -31.430742, lng: -64.1898147 },
+    // Sin geo hasta confirmar el pin: el link de Maps que pasaron trae el centro
+    // del mapa (zoom 14), no la ubicación, y las coordenadas viejas no estaban verificadas.
     hours: HOURS,
   },
 ];
