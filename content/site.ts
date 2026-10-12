@@ -30,16 +30,19 @@ export const links = {
   instagramHandle: '@smilelabargentina',
 } as const;
 
-export const nav = [
+export type NavItem = { label: string; href: string; external?: boolean };
+
+/** «Contacto» abre WhatsApp directo: es el canal real, y así el clic se mide como wsp_click. */
+export const nav: readonly NavItem[] = [
   { label: 'Tratamientos', href: '/tratamientos' },
   { label: 'Pacientes', href: '/pacientes' },
   { label: 'Sedes', href: '/sedes' },
   { label: 'Turnos', href: '/turnos' },
-  { label: 'Contacto', href: '/contacto' },
-] as const;
+  { label: 'Contacto', href: links.whatsapp, external: true },
+];
 
 /** El menú mobile suma «Para informarte», que en desktop vive en el footer del home. */
-export const navMobile = [...nav, { label: 'Para informarte', href: '/para-informarte' }] as const;
+export const navMobile: readonly NavItem[] = [...nav, { label: 'Para informarte', href: '/para-informarte' }];
 
 export const hoursSummary = [
   'Lun a Vie 9:00 — 19:00',
