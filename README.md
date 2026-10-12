@@ -34,15 +34,15 @@ npm run lint
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://www.consultoriosmilelab.com
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX        # opcional
+NEXT_PUBLIC_GA_ID=G-8D1XH5SJ9H        # opcional: en producción ya se usa este por defecto
 ```
 
 `NEXT_PUBLIC_SITE_URL` se usa para canonicals, Open Graph, `sitemap.xml` y los `@id`
-del JSON-LD. Sin ella cae al default de `content/site.ts`. **Ponerla antes del primer
-deploy** o los canonicals van a apuntar al dominio equivocado.
+del JSON-LD. Sin ella cae al default de `content/site.ts` (`https://www.consultoriosmilelab.com`).
 
-`NEXT_PUBLIC_GA_ID` activa GA4. Sin ella no se carga ningún script de terceros, así que
-dev y preview quedan limpios. Las dos son `NEXT_PUBLIC_*`: se inlinean **en build**, no
+GA4 (`G-8D1XH5SJ9H`) se activa solo en el deploy de producción de Vercel
+(`NEXT_PUBLIC_VERCEL_ENV=production`); dev y preview quedan limpios. `NEXT_PUBLIC_GA_ID`
+lo pisa si hiciera falta otro ID. Las dos son `NEXT_PUBLIC_*`: se inlinean **en build**, no
 en runtime — cambiarlas exige redeploy.
 
 ## Analítica
@@ -154,7 +154,7 @@ sería inventar. Si más adelante se conecta la API de Places entran solas y com
       Dentalink conviven profesionales reales con registros de demo (los de matrícula
       `MP 12.345 / 23.456 / 34.567` son correlativos y quedaron apartados en
       `teamPendingReview`).
-- [ ] `NEXT_PUBLIC_SITE_URL` y `NEXT_PUBLIC_GA_ID` en Vercel.
+- [x] URL del sitio y GA4 (`G-8D1XH5SJ9H`) con default en el código.
 
 ## QA
 
