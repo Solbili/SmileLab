@@ -42,7 +42,8 @@ del JSON-LD. Sin ella cae al default de `content/site.ts` (`https://www.consulto
 
 GA4 (`G-8D1XH5SJ9H`) se activa solo en el deploy de producción de Vercel
 (`NEXT_PUBLIC_VERCEL_ENV=production`); dev y preview quedan limpios. `NEXT_PUBLIC_GA_ID`
-lo pisa si hiciera falta otro ID. Las dos son `NEXT_PUBLIC_*`: se inlinean **en build**, no
+lo pisa si hiciera falta otro ID. Lo mismo con Google Tag Manager (`GTM-TTMM39DR`,
+`NEXT_PUBLIC_GTM_ID`): ahí van Ads y el Píxel de Meta, **no** GA4 (se duplicaría). Las dos son `NEXT_PUBLIC_*`: se inlinean **en build**, no
 en runtime — cambiarlas exige redeploy.
 
 ## Analítica

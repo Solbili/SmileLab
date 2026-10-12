@@ -13,9 +13,18 @@
  */
 const GA_PROD_ID = 'G-8D1XH5SJ9H';
 
-export const GA_ID =
-  process.env.NEXT_PUBLIC_GA_ID ??
-  (process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? GA_PROD_ID : undefined);
+const GTM_PROD_ID = 'GTM-TTMM39DR';
+
+const isProd = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
+
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? (isProd ? GA_PROD_ID : undefined);
+
+/**
+ * Tag Manager carga lo que se administra desde su panel (Google Ads, Píxel de
+ * Meta, etc.). GA4 NO va ahí: ya lo carga este código, y una etiqueta de GA4 en
+ * GTM duplicaría las visitas.
+ */
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? (isProd ? GTM_PROD_ID : undefined);
 
 export type ConversionEvent = 'wsp_click' | 'agenda_click' | 'sede_maps_click';
 
@@ -45,4 +54,7 @@ declare global {
 
 export function track(event: ConversionEvent, params: GtagParams = {}) {
   window.gtag?.('event', event, params);
+  // Para GTM: el mismo evento como «Evento personalizado» (wsp_click, etc.), que
+  // es lo que disparan las conversiones de Ads y del Píxel de Meta.
+  if (GTM_ID) (window.dataLayer = window.dataLayer || []).push({ event, ...params });
 }
